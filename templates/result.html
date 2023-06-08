@@ -4,6 +4,21 @@
 <head>
     <title>Image Comparison Result</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .image-container {
+            height: 300px;
+            /* Adjust the height as per your requirements */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .image-container img {
+            object-fit: contain;
+            max-height: 100%;
+            max-width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -12,13 +27,17 @@
         <div class="row mt-4">
             <div class="col-md-6">
                 <h4 class="text-center">Image 1</h4>
-                <img src="{{ url_for('static', filename=img1) }}" class="img-fluid rounded mx-auto d-block"
-                    alt="Image 1">
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename=img1) }}" class="img-fluid rounded mx-auto d-block"
+                        alt="Image 1">
+                </div>
             </div>
             <div class="col-md-6">
                 <h4 class="text-center">Image 2</h4>
-                <img src="{{ url_for('static', filename=img2) }}" class="img-fluid rounded mx-auto d-block"
-                    alt="Image 2">
+                <div class="image-container">
+                    <img src="{{ url_for('static', filename=img2) }}" class="img-fluid rounded mx-auto d-block"
+                        alt="Image 2">
+                </div>
             </div>
         </div>
         <div class="row mt-4">
