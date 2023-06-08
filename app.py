@@ -4,7 +4,7 @@ from main import processImg
 import os
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
+app.config['UPLOAD_FOLDER'] = 'static'
 
 @app.route('/')
 def index():
@@ -22,15 +22,15 @@ def compare_images():
     # Process images
     result = processImg(img1_path, img2_path)
 
-    # Remove temporary uploaded images
-    remove_uploaded_file(img1_path)
-    remove_uploaded_file(img2_path)
+    # # Remove temporary uploaded images
+    # remove_uploaded_file(img1_path)
+    # remove_uploaded_file(img2_path)
 
-    return render_template('result.html', result=result)
+    return render_template('result.html', img1=img1_path, img2=img2_path, result=result)
 
 def save_uploaded_file(file):
     filename = secure_filename(file.filename)
-    file_path = app.config['UPLOAD_FOLDER'] + '/' + filename
+    file_path = filename
     file.save(file_path)
     return file_path
 
