@@ -28,6 +28,7 @@ def compare_images():
         sleep(10)
         remove_uploaded_file(os.path.join(app.config['UPLOAD_FOLDER'], img1_path))
         remove_uploaded_file(os.path.join(app.config['UPLOAD_FOLDER'], img2_path))
+        return
 
     thread = Thread(target=delete_files)
     thread.start()
