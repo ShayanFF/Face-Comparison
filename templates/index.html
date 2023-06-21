@@ -20,6 +20,9 @@
                     <div class="form-group">
                         <label for="img1">Image 1</label>
                         <input type="file" class="form-control-file" id="img1" name="img1" accept="image/*">
+                        <small class="form-text text-muted">
+                            Upload an image  or take an image.
+                        </small>
                     </div>
                 </div>
             </div>
@@ -28,6 +31,9 @@
                     <div class="form-group">
                         <label for="img2">Image 2</label>
                         <input type="file" class="form-control-file" id="img2" name="img2" accept="image/*">
+                        <small class="form-text text-muted">
+                            Upload an image or take an image.
+                        </small>
                     </div>
                 </div>
             </div>
@@ -49,11 +55,16 @@
             var img1File = img1Input.files[0];
             var img2File = img2Input.files[0];
 
-            var img1Compressed = new File([img1File], "compressed_img1.jpg", { type: "image/jpeg" });
-            var img2Compressed = new File([img2File], "compressed_img2.jpg", { type: "image/jpeg" });
+            if (!img1File && !img2File) {
+                alert('Make sure to upload two images!');
+                return;
+            }
 
-            img1Input.files[0] = img1Compressed;
-            img2Input.files[0] = img2Compressed;
+            var img1Compressed = img1File ? new File([img1File], "compressed_img1.jpg", { type: "image/jpeg" }) : null;
+            var img2Compressed = img2File ? new File([img2File], "compressed_img2.jpg", { type: "image/jpeg" }) : null;
+
+            img1Input.files[0] = img1Compressed || img1File;
+            img2Input.files[0] = img2Compressed || img2File;
 
             this.submit();
         });
