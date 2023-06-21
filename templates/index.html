@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <h1 class="text-center">Face Comparison</h1>
-        <form id="upload-form" enctype="multipart/form-data">
+        <form action="/compare" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-6 offset-md-3">
                     <div class="form-group">
@@ -38,26 +38,6 @@
             </div>
         </form>
     </div>
-
-    <script>
-        document.getElementById('upload-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            var img1Input = document.getElementById('img1');
-            var img2Input = document.getElementById('img2');
-
-            var img1File = img1Input.files[0];
-            var img2File = img2Input.files[0];
-
-            var img1Compressed = new File([img1File], "compressed_img1.jpg", { type: "image/jpeg" });
-            var img2Compressed = new File([img2File], "compressed_img2.jpg", { type: "image/jpeg" });
-
-            img1Input.files[0] = img1Compressed;
-            img2Input.files[0] = img2Compressed;
-
-            this.submit();
-        });
-    </script>
 </body>
 
 </html>
