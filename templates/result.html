@@ -2,12 +2,11 @@
 <html>
 
 <head>
-    <title>Image Comparison Result</title>
+    <title>Face Comparison Result</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         .image-container {
             height: 300px;
-            /* Adjust the height as per your requirements */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -23,7 +22,7 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">Image Comparison Result</h1>
+        <h1 class="text-center">Face Comparison Result</h1>
         <div class="row mt-4">
             <div class="col-md-6">
                 <h4 class="text-center">Image 1</h4>
@@ -43,7 +42,13 @@
         <div class="row mt-4">
             <div class="col-md-6 offset-md-3">
                 <h4 class="text-center">Result:</h4>
-                <p class="text-center">{{ result }}</p>
+                <p class="text-center">
+                    {% if result %}
+                        The faces are the same.
+                    {% else %}
+                        The faces are different.
+                    {% endif %}
+                </p>
             </div>
         </div>
         <div class="row mt-4">
